@@ -1,0 +1,221 @@
+/* Estilos generales del cuerpo de la página */
+body {
+    background-color: #E6E0F8; 
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Nunito", sans-serif;
+    overflow: hidden; /* Evita el scroll */
+    position: relative;
+}
+
+/* Estilos para el contenedor de tsparticles (fondo animado) */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Asegura que esté detrás del formulario */
+}
+
+/* Estilos para el contenedor del formulario */
+.formulario {
+    background: #fff;
+    padding: 50px 70px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Asegura que esté encima de tsparticles */
+}
+
+/* Estilos para el título principal del formulario */
+.formulario h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #6c3483;
+}
+
+/* Estilos para el formulario en sí */
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* Espacio entre los elementos del formulario */
+    width: 100%;
+}
+
+/* Estilos para el contenedor de cada campo de entrada (familia) */
+.familias {
+    position: relative;
+    width: 90%;
+}
+
+/* Estilos para los campos de entrada y AHORA TAMBIÉN PARA SELECT */
+.familias input,
+.familias select { /* <-- CAMBIO AQUÍ: Añadimos .familias select */
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #adadad;
+    border-radius: 25px;
+    outline: none;
+    font-size: 18px;
+    transition: border 0.3s; /* Transición suave para el borde */
+    /* Para select, asegúrate de que el background sea blanco si no quieres el color por defecto */
+    background-color: #fff; 
+    /* Eliminar flecha por defecto en algunos navegadores (opcional) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Añadir un ícono de flecha personalizado (opcional, requiere CSS adicional o SVG) */
+    /* Este SVG es una flecha hacia abajo de color gris claro */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23adadad" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+    padding-right: 40px; /* Espacio para el ícono */
+}
+
+/* Estilos para el campo de entrada y select cuando está en foco */
+.familias input:focus,
+.familias select:focus { /* <-- CAMBIO AQUÍ: Añadimos .familias select:focus */
+    border-color: #6c3483;
+}
+
+/* Estilos para las etiquetas de los campos de entrada y select */
+.familias label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #adadad;
+    pointer-events: none; /* Permite hacer clic a través de la etiqueta */
+    transition: top 0.3s, font-size 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+/* Estilos para las etiquetas cuando el campo de entrada o select está en foco o tiene contenido */
+/* Se ajustan las reglas para que la etiqueta del select también se mueva */
+.familias input:focus ~ label, 
+.familias input:not(:placeholder-shown) ~ label,
+.familias select:focus ~ label, 
+.familias select:not([value=""]) ~ label { /* Para select, cuando tiene un valor seleccionado (no la opción vacía) */
+    top: -10px; /* Mueve la etiqueta hacia arriba */
+    font-size: 14px;
+    color: #6c3483;
+}
+/* Regla adicional para asegurar que la etiqueta del select suba una vez que una opción válida es seleccionada */
+.familias select:valid ~ label {
+    top: -10px;
+    font-size: 14px;
+    color: #6c3483;
+}
+
+
+/* Estilos para el botón de aceptar */
+button {
+    background: linear-gradient(135deg, #6c3483, #a358b7); /* Degradado de color */
+    color: white;
+    border: none;
+    padding: 15px 0;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background 0.3s; /* Transición suave para el fondo */
+    width: 90%;
+    margin-top: 10px;
+}
+
+/* Estilos para el botón al pasar el ratón por encima */
+button:hover {
+    background: linear-gradient(135deg, #7d4cb8, #b672da); /* Cambio de degradado al pasar el ratón */
+}
+
+/* Estilos para el Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegura que esté encima de todo */
+    opacity: 0; /* Inicialmente oculto */
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición suave para aparecer/desaparecer */
+}
+
+/* Estilos para mostrar el modal */
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-20px); /* Efecto de deslizamiento al aparecer */
+    transition: transform 0.3s ease;
+    position: relative; /* Para posicionar el botón de cerrar */
+}
+
+/* Efecto de deslizamiento del modal al mostrarse */
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+/* Estilos para el título del modal */
+.modal-content h2 {
+    color: #6c3483;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Estilos para el mensaje del modal */
+.modal-content p {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Estilos para el botón de cerrar del modal */
+.modal-content .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+/* Estilos para el botón de cerrar al pasar el ratón por encima */
+.modal-content .close-button:hover {
+    color: #6c3483;
+}
+
+/* Estilos para diferentes tipos de mensajes (éxito/error) */
+.modal-content.success {
+    border: 2px solid #28a745; /* Borde verde para éxito */
+}
+
+.modal-content.error {
+    border: 2px solid #dc3545; /* Borde rojo para error */
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mis XV</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="tsparticles"></div>
+
+    <div class="formulario">
+        <h1>Mis XV</h1>
+        <form id="miFormulario">
+            <div class="familias">
+                <!-- CAMBIO AQUÍ: De input a select -->
+                <select id="nombre" name="familia" required>
+                    <option value="" disabled selected>Selecciona una familia</option>
+                    <option value="Familia Garcia">Familia García</option>
+                    <option value="Familia Lopez">Familia López</option>
+                    <option value="Familia Martinez">Familia Martínez</option>
+                    <option value="Familia Rodriguez">Familia Rodríguez</option>
+                    <option value="Familia Sanchez">Familia Sánchez</option>
+                    <option value="Familia Hernandez">Familia Hernández</option>
+                    <!-- Puedes añadir más opciones aquí según tus necesidades -->
+                </select>
+                <label for="nombre">Familia (Apellidos)</label>
+            </div>
+            <div class="familias">
+                <input id="integrantes" type="number" required name="integrantes" placeholder=" " min="0" />
+                <label for="integrantes">Integrantes</label>
+            </div>
+            <div id="nombresIntegrantesContainer">
+                <!-- Aquí se generarán los campos de texto para los nombres dinámicamente -->
+            </div>
+            <button type="button" onclick="guardarEnGoogleSheets()">Aceptar</button>
+        </form>
+    </div>
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-button" onclick="hideModal()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
