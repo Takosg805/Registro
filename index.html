@@ -14,16 +14,72 @@
         <h1>Mis XV</h1>
         <form id="miFormulario">
             <div class="familias">
-                <!-- CAMBIO AQUÍ: De input a select -->
+                <!-- LISTA ACTUALIZADA DE FAMILIAS SEGÚN EL JS -->
                 <select id="nombre" name="familia" required>
                     <option value="" disabled selected>Selecciona una familia</option>
-                    <option value="Familia Garcia">Familia García</option>
-                    <option value="Familia Lopez">Familia López</option>
-                    <option value="Familia Martinez">Familia Martínez</option>
-                    <option value="Familia Rodriguez">Familia Rodríguez</option>
-                    <option value="Familia Sanchez">Familia Sánchez</option>
-                    <option value="Familia Hernandez">Familia Hernández</option>
-                    <!-- Puedes añadir más opciones aquí según tus necesidades -->
+                    <option value="García López">García López</option>
+                    <option value="López Tapia">López Tapia</option>
+                    <option value="López Vera">López Vera</option>
+                    <option value="López Galvan">López Galvan</option>
+                    <option value="Bernal López">Bernal López</option>
+                    <option value="Hurd Bonilla">Hurd Bonilla</option>
+                    <option value="Xochil Bonilla">Xochil Bonilla</option>
+                    <option value="García Romero">García Romero</option>
+                    <option value="García García">García García</option>
+                    <option value="García Aguilar">García Aguilar</option>
+                    <option value="Vega Cruz">Vega Cruz</option>
+                    <option value="Cruz Romero">Cruz Romero</option>
+                    <option value="Rangel Paz">Rangel Paz</option>
+                    <option value="Rodríguez Ramírez">Rodríguez Ramírez</option>
+                    <option value="Flores Merlos">Flores Merlos</option>
+                    <option value="Herrera Flores (Luz)">Herrera Flores (Luz)</option>
+                    <option value="Herrera Flores (Mary)">Herrera Flores (Mary)</option>
+                    <option value="García Flores">García Flores</option>
+                    <option value="Flores Osnaya">Flores Osnaya</option>
+                    <option value="Flores Alcantar">Flores Alcantar</option>
+                    <option value="Merlos Martines">Merlos Martines</option>
+                    <option value="Flores Medina">Flores Medina</option>
+                    <option value="Tapia Baca">Tapia Baca</option>
+                    <option value="Susy">Susy</option>
+                    <option value="Dulce">Dulce</option>
+                    <option value="Yuri">Yuri</option>
+                    <option value="Jani">Jani</option>
+                    <option value="Ximena">Ximena</option>
+                    <option value="Angely">Angely</option>
+                    <option value="Carlos">Carlos</option>
+                    <option value="Alondra">Alondra</option>
+                    <option value="Amalia">Amalia</option>
+                    <option value="Fatima">Fatima</option>
+                    <option value="Yocelin">Yocelin</option>
+                    <option value="Byron">Byron</option>
+                    <option value="Victor">Victor</option>
+                    <option value="Giselle">Giselle</option>
+                    <option value="Luis Angel">Luis Angel</option>
+                    <option value="Daher">Daher</option>
+                    <option value="Michelle">Michelle</option>
+                    <option value="Isa">Isa</option>
+                    <option value="Lidia">Lidia</option>
+                    <option value="Wendy">Wendy</option>
+                    <option value="Aidee">Aidee</option>
+                    <option value="Tete">Tete</option>
+                    <option value="Santi">Santi</option>
+                    <option value="Titi">Titi</option>
+                    <option value="Huido">Huido</option>
+                    <option value="Gera">Gera</option>
+                    <option value="Migue">Migue</option>
+                    <option value="Olga">Olga</option>
+                    <option value="Baruc">Baruc</option>
+                    <option value="Lupita Franco">Lupita Franco</option>
+                    <option value="Nadia">Nadia</option>
+                    <option value="Maestra Edit">Maestra Edit</option>
+                    <option value="Rosalva">Rosalva</option>
+                    <option value="Maestra Jose">Maestra Jose</option>
+                    <option value="Miriam">Miriam</option>
+                    <option value="Yajaziel">Yajaziel</option>
+                    <option value="Gustavo">Gustavo</option>
+                    <option value="Cristian">Cristian</option>
+                    <option value="Saul">Saul</option>
+                    <!-- Asegúrate de que los 'value' aquí coincidan EXACTAMENTE con las claves en tu objeto limitesPorFamilia en script.js -->
                 </select>
                 <label for="nombre">Familia (Apellidos)</label>
             </div>
@@ -31,13 +87,16 @@
                 <input id="integrantes" type="number" required name="integrantes" placeholder=" " min="0" />
                 <label for="integrantes">Integrantes</label>
             </div>
+            <!-- Contenedor para los nombres de los integrantes generados dinámicamente -->
             <div id="nombresIntegrantesContainer">
                 <!-- Aquí se generarán los campos de texto para los nombres dinámicamente -->
             </div>
+            <!-- Botón para enviar el formulario -->
             <button type="button" onclick="guardarEnGoogleSheets()">Aceptar</button>
         </form>
     </div>
 
+    <!-- Modal personalizado para mensajes de éxito/error -->
     <div id="customModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-button" onclick="hideModal()">&times;</button>
@@ -46,6 +105,7 @@
         </div>
     </div>
 
+    <!-- Scripts externos para partículas de fondo y tu lógica JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>

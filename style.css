@@ -25,11 +25,11 @@ body {
 /* Estilos para el contenedor del formulario */
 .formulario {
     background: #fff;
-    padding: 50px 70px;
+    padding: 50px 70px; /* Padding por defecto para pantallas grandes */
     border-radius: 15px;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     max-width: 500px;
-    width: 100%;
+    width: 100%; /* Ocupa el 100% del ancho disponible hasta max-width */
     text-align: center;
     position: relative;
     z-index: 1; /* Asegura que esté encima de tsparticles */
@@ -37,7 +37,7 @@ body {
 
 /* Estilos para el título principal del formulario */
 .formulario h1 {
-    font-size: 3rem;
+    font-size: 3rem; /* Tamaño de fuente por defecto */
     margin-bottom: 20px;
     color: #6c3483;
 }
@@ -54,37 +54,35 @@ body {
 /* Estilos para el contenedor de cada campo de entrada (familia) */
 .familias {
     position: relative;
-    width: 90%;
+    width: 90%; /* Ocupa el 90% del ancho del formulario */
 }
 
-/* Estilos para los campos de entrada y AHORA TAMBIÉN PARA SELECT */
+/* Estilos para los campos de entrada y select */
 .familias input,
-.familias select { /* <-- CAMBIO AQUÍ: Añadimos .familias select */
+.familias select {
     width: 100%;
     padding: 15px 20px;
     border: 2px solid #adadad;
     border-radius: 25px;
     outline: none;
     font-size: 18px;
-    transition: border 0.3s; /* Transición suave para el borde */
-    /* Para select, asegúrate de que el background sea blanco si no quieres el color por defecto */
+    transition: border 0.3s;
     background-color: #fff; 
-    /* Eliminar flecha por defecto en algunos navegadores (opcional) */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    /* Añadir un ícono de flecha personalizado (opcional, requiere CSS adicional o SVG) */
-    /* Este SVG es una flecha hacia abajo de color gris claro */
     background-image: url('data:image/svg+xml;utf8,<svg fill="%23adadad" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 20px;
-    padding-right: 40px; /* Espacio para el ícono */
+    padding-right: 40px;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho */
+    vertical-align: middle;
 }
 
 /* Estilos para el campo de entrada y select cuando está en foco */
 .familias input:focus,
-.familias select:focus { /* <-- CAMBIO AQUÍ: Añadimos .familias select:focus */
+.familias select:focus {
     border-color: #6c3483;
 }
 
@@ -96,21 +94,19 @@ body {
     transform: translateY(-50%);
     font-size: 16px;
     color: #adadad;
-    pointer-events: none; /* Permite hacer clic a través de la etiqueta */
-    transition: top 0.3s, font-size 0.3s, color 0.3s; /* Transiciones suaves */
+    pointer-events: none;
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
 }
 
 /* Estilos para las etiquetas cuando el campo de entrada o select está en foco o tiene contenido */
-/* Se ajustan las reglas para que la etiqueta del select también se mueva */
 .familias input:focus ~ label, 
 .familias input:not(:placeholder-shown) ~ label,
 .familias select:focus ~ label, 
-.familias select:not([value=""]) ~ label { /* Para select, cuando tiene un valor seleccionado (no la opción vacía) */
-    top: -10px; /* Mueve la etiqueta hacia arriba */
+.familias select:not([value=""]) ~ label {
+    top: -10px;
     font-size: 14px;
     color: #6c3483;
 }
-/* Regla adicional para asegurar que la etiqueta del select suba una vez que una opción válida es seleccionada */
 .familias select:valid ~ label {
     top: -10px;
     font-size: 14px;
@@ -120,21 +116,21 @@ body {
 
 /* Estilos para el botón de aceptar */
 button {
-    background: linear-gradient(135deg, #6c3483, #a358b7); /* Degradado de color */
+    background: linear-gradient(135deg, #6c3483, #a358b7);
     color: white;
     border: none;
     padding: 15px 0;
     border-radius: 25px;
     cursor: pointer;
     font-size: 20px;
-    transition: background 0.3s; /* Transición suave para el fondo */
+    transition: background 0.3s;
     width: 90%;
     margin-top: 10px;
 }
 
 /* Estilos para el botón al pasar el ratón por encima */
 button:hover {
-    background: linear-gradient(135deg, #7d4cb8, #b672da); /* Cambio de degradado al pasar el ratón */
+    background: linear-gradient(135deg, #7d4cb8, #b672da);
 }
 
 /* Estilos para el Modal */
@@ -144,14 +140,14 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente oscuro */
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Asegura que esté encima de todo */
-    opacity: 0; /* Inicialmente oculto */
+    z-index: 1000;
+    opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición suave para aparecer/desaparecer */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* Estilos para mostrar el modal */
@@ -169,9 +165,9 @@ button:hover {
     text-align: center;
     max-width: 400px;
     width: 90%;
-    transform: translateY(-20px); /* Efecto de deslizamiento al aparecer */
+    transform: translateY(-20px);
     transition: transform 0.3s ease;
-    position: relative; /* Para posicionar el botón de cerrar */
+    position: relative;
 }
 
 /* Efecto de deslizamiento del modal al mostrarse */
@@ -213,9 +209,82 @@ button:hover {
 
 /* Estilos para diferentes tipos de mensajes (éxito/error) */
 .modal-content.success {
-    border: 2px solid #28a745; /* Borde verde para éxito */
+    border: 2px solid #28a745;
 }
 
 .modal-content.error {
-    border: 2px solid #dc3545; /* Borde rojo para error */
+    border: 2px solid #dc3545;
+}
+
+
+/* === MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL === */
+
+/* Para pantallas con un ancho máximo de 600px (celulares, tablets en vertical) */
+@media (max-width: 600px) {
+    .formulario {
+        padding: 30px 20px; /* Reduce el padding para que el formulario no sea tan grande */
+        margin: 20px; /* Añade un margen alrededor para que no se pegue a los bordes */
+    }
+
+    .formulario h1 {
+        font-size: 2.5rem; /* Ajusta el tamaño del título para pantallas más pequeñas */
+    }
+
+    /* Puedes ajustar otros elementos si lo ves necesario */
+    /* Por ejemplo, reducir el gap entre los campos si es muy grande */
+    .formulario form {
+        gap: 15px; /* Reduce el espacio entre campos en móvil */
+    }
+
+    .familias {
+        width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+    }
+
+    .familias input,
+    .familias select {
+        font-size: 16px; /* Ligeramente más pequeño para mejor lectura en móvil */
+        padding: 12px 15px; /* Ajusta el padding para que no se vea tan alto */
+    }
+
+    .familias label {
+        font-size: 14px;
+        left: 15px; /* Ajusta la posición del label */
+    }
+
+    .familias input:focus ~ label, 
+    .familias input:not(:placeholder-shown) ~ label,
+    .familias select:focus ~ label, 
+    .familias select:not([value=""]) ~ label,
+    .familias select:valid ~ label {
+        top: -8px; /* Ajusta la posición del label cuando está arriba */
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 18px; /* Ajusta el tamaño de fuente del botón */
+        padding: 12px 0; /* Ajusta el padding del botón */
+    }
+
+    .modal-content {
+        padding: 30px; /* Reduce el padding del modal */
+    }
+
+    .modal-content h2 {
+        font-size: 1.8rem; /* Ajusta el título del modal */
+    }
+
+    .modal-content p {
+        font-size: 1rem; /* Ajusta el texto del modal */
+    }
+}
+
+/* Para pantallas aún más pequeñas (ej. celulares muy compactos) */
+@media (max-width: 400px) {
+    .formulario {
+        padding: 20px 15px; /* Más reducción del padding */
+    }
+
+    .formulario h1 {
+        font-size: 2.2rem;
+    }
 }
